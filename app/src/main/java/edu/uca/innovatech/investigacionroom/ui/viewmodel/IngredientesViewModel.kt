@@ -27,6 +27,13 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
         insertIngrediente(nuevoIngrediente)
     }
 
+    fun entradasValidas(nombre: String, tipo: String): Boolean {
+        if (nombre.isBlank() || tipo.isBlank()) {
+            return false
+        }
+        return true
+    }
+
 }
 
 //Clase Factory para instansear la instanciade ViewModel
