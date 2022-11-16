@@ -13,6 +13,4 @@ data class Ingrediente(
     val nombre: String,
     @ColumnInfo(name = "tipo")
     val tipo: String,
-    @ColumnInfo(name = "humano")
-    val humano: Boolean
 )
