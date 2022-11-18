@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.IngredientesFragment"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    tools:context=".ui.view.IngredientesFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,18 +12,17 @@
         android:orientation="vertical">
 
         <TextView
+            style="@style/TextAppearance.Material3.DisplayLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Lista de Ingredientes"
             android:layout_marginBottom="12dp"
-            style="@style/TextAppearance.Material3.TitleLarge"/>
+            android:text="@string/ingredientes" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/nombre"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:hint="@string/nombre">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etNombre"
@@ -34,11 +33,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tvTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/tipo"
-            android:layout_marginBottom="12dp">
+            android:layout_marginBottom="12dp"
+            android:hint="@string/tipo">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTipo"
@@ -52,7 +50,31 @@
             android:id="@+id/btnAgregar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/agregar_ingrediente"/>
+            android:text="@string/agregar_ingrediente" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            style="@style/Widget.Material3.MaterialDivider"
+            android:layout_marginTop="12dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/lista_de_ingredientes"
+            style="@style/TextAppearance.Material3.TitleLarge"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            style="@style/Widget.Material3.MaterialDivider"
+            android:layout_marginTop="12dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical" />
 
     </LinearLayout>
 

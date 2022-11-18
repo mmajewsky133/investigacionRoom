@@ -19,7 +19,7 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
         }
     }
 
-    fun agregarIngrediente(nombre: String, tipo: String){
+    fun agregarIngrediente(nombre: String, tipo: String) {
         val nuevoIngrediente = Ingrediente(
             nombre = nombre,
             tipo = tipo
@@ -32,6 +32,29 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
             return false
         }
         return true
+    }
+
+    fun agarrarIngrediente(id: Int): LiveData<Ingrediente> {
+        return ingredienteDao.getIngrediente(id).asLiveData()
+    }
+
+    fun eliminarIngrediente(ingrediente: Ingrediente) {
+        viewModelScope.launch {
+            ingredienteDao.delete(ingrediente)
+        }
+    }
+
+    fun editarIngrediente(id: Int, nombre: String, tipo: String) {
+
+        val ingrediente = Ingrediente(id, nombre, tipo)
+
+        updateIngrediente(ingrediente)
+    }
+
+    private fun updateIngrediente(ingrediente: Ingrediente) {
+        viewModelScope.launch {
+            ingredienteDao.update(ingrediente)
+        }
     }
 
 }

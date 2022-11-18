@@ -3,4 +3,12 @@
     <string name="nombre">Nombre</string>
     <string name="tipo">Tipo</string>
     <string name="agregar_ingrediente">Agregar Ingrediente</string>
+    <string name="ingrediente">Ingrediente</string>
+    <string name="lista_de_ingredientes">Lista de Ingredientes</string>
+    <string name="ingredientes">Ingredientes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="guardar">Guardar</string>
 </resources>

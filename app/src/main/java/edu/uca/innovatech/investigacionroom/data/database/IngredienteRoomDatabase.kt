@@ -26,11 +26,7 @@ abstract class IngredienteRoomDatabase : RoomDatabase() {
                     context.applicationContext,
                     IngredienteRoomDatabase::class.java,
                     "ingrediente_database"
-                )
-                    // Wipes and rebuilds instead of migrating if no Migration object.
-                    // Migration is not part of this codelab.
-                    .fallbackToDestructiveMigration()
-                    .build()
+                ).build()
                 INSTANCE = instance
                 // return instance
                 instance
