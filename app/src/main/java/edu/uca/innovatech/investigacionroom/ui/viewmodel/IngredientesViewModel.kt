@@ -13,10 +13,8 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
 
     val allIngredientes: LiveData<List<Ingrediente>> = ingredienteDao.getIngredientes().asLiveData()
 
-    private fun insertIngrediente(ingrediente: Ingrediente) {
-        viewModelScope.launch {
-            ingredienteDao.insert(ingrediente)
-        }
+    fun agarrarIngrediente(id: Int): LiveData<Ingrediente> {
+        return ingredienteDao.getIngrediente(id).asLiveData()
     }
 
     fun agregarIngrediente(nombre: String, tipo: String) {
@@ -27,20 +25,9 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
         insertIngrediente(nuevoIngrediente)
     }
 
-    fun entradasValidas(nombre: String, tipo: String): Boolean {
-        if (nombre.isBlank() || tipo.isBlank()) {
-            return false
-        }
-        return true
-    }
-
-    fun agarrarIngrediente(id: Int): LiveData<Ingrediente> {
-        return ingredienteDao.getIngrediente(id).asLiveData()
-    }
-
-    fun eliminarIngrediente(ingrediente: Ingrediente) {
+    private fun insertIngrediente(ingrediente: Ingrediente) {
         viewModelScope.launch {
-            ingredienteDao.delete(ingrediente)
+            ingredienteDao.insert(ingrediente)
         }
     }
 
@@ -57,9 +44,21 @@ class IngredientesViewModel(private val ingredienteDao: IngredienteDao) : ViewMo
         }
     }
 
-}
+    fun eliminarIngrediente(ingrediente: Ingrediente) {
+        viewModelScope.launch {
+            ingredienteDao.delete(ingrediente)
+        }
+    }
 
-//Clase Factory para instansear la instanciade ViewModel
+    fun entradasValidas(nombre: String, tipo: String): Boolean {
+        if (nombre.isBlank() || tipo.isBlank()) {
+            return false
+        }
+        return true
+    }
+
+}
+    //Clase Factory para instansear la instanciade ViewModel
 class IngredientesViewModelFactory(private val ingredienteDao: IngredienteDao) :
     ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
